@@ -43,15 +43,19 @@ projection: {name:1, number_of_employees: 1}
 
 ### 9. Order all the companies by their IPO price in a descending order.
 
-<!-- Your Code Goes Here -->
-
+filter:{ipo: {$nin: [null]}}
+sort: {valuation_amount: -1}
 ### 10. Retrieve the 10 companies with most employees, order by the `number of employees`
 
-<!-- Your Code Goes Here -->
+filter: {number_of_employees: {$ne: null}}
+sort: {number_of_employees: -1}
+limit: 10
 
 ### 11. All the companies founded on the second semester of the year. Limit your search to 1000 companies.
 
-<!-- Your Code Goes Here -->
+filter: {$and : [{founded_month:{$gte: 6}}, {founded_month:{$lte: 12}}]}
+projection: {founded_month: 1}
+limit: 1000
 
 ### 12. All the companies founded before 2000 that have an acquisition amount of more than 10.000.000
 
